@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="user">
+<extension version="2.5" type="plugin" group="user" method="upgrade">
 	<name>plg_user_sendactivationmail</name>
 	<author>Carlos M. Cámara</author>
 	<creationDate>March 2012</creationDate>
@@ -11,7 +11,7 @@
 	<description>PLG_USER_SENDACTIVATIONMAIL_XML_DESCRIPTION</description>
                   <languages folder="languages">
 		<language tag="en-GB">en-GB.plg_user_sendactivationmail.ini</language>
-		<language tag="en-GB">en-GB.plg_user_sendactivationmail.ini</language>
+		<language tag="en-GB">en-GB.plg_user_sendactivationmail.sys.ini</language>
                                     <language tag="es-ES">es-ES.plg_user_sendactivationmail.ini</language>
 		<language tag="es-ES">es-ES.plg_user_sendactivationmail.sys.ini</language>
 	</languages>
