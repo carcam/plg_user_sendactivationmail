@@ -70,8 +70,7 @@ class plgUserSendactivationmail extends JPlugin
                                             ->setBody($emailBody);
 
                                     if (!$mail->Send()) {
-                                            // TODO: Probably should raise a plugin error but this event is not error checked.
-                                            JError::raiseWarning(500, JText::_('ERROR_SENDING_EMAIL'));
+                                            JFactory::getApplication()->enqueueMessage(JText::_('ERROR_SENDING_EMAIL'), 'error');
                                     }
                                 }
                             }
