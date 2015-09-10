@@ -31,50 +31,64 @@ class plgUserSendactivationmail extends JPlugin
                     public function onUserBeforeSave($user, $isnew, $new)
                     {
                         $config	= JFactory::getConfig();
-                        $mail_to_user = $this->params->get('mail_to_user', 1);
+                        $groupsToCheck = $this->params->get('sam_usergroups', 0);
                         
-                        if ($user['block']=="1" && $new['block']=="0")
+                        if ($user['block']=="1" && $new['block']=="0" && $this->checkGroups($groupsToCheck, $user['groups']))
                         {
-                                if ($mail_to_user)
-                                {
-                                    // Load user_joomla plugin language (not done automatically).
-                                    $lang = JFactory::getLanguage();
-                                    $lang->load('plg_user_sendactivationmail', JPATH_ADMINISTRATOR);
+							// Load user_joomla plugin language (not done automatically).
+							$lang = JFactory::getLanguage();
+							$lang->load('plg_user_sendactivationmail', JPATH_ADMINISTRATOR);
 
-                                    // Compute the mail subject.
-                                    $emailSubject = JText::sprintf(
-                                            'PLG_USER_SENDACTIVATIONMAIL_EMAIL_SUBJECT',
-                                            $user['name'],
-                                            $config->get('sitename')
-                                    );
-                                
-                                    // Compute the mail body.
-                                    $emailBody = JText::sprintf(
-                                            'PLG_USER_SENDACTIVATIONMAIL_EMAIL_BODY',
-                                            $user['name'],
-                                            $config->get('sitename'),
-                                            JUri::root()
-                                    );
-                            
+							// Compute the mail subject.
+							$emailSubject = JText::sprintf(
+									'PLG_USER_SENDACTIVATIONMAIL_EMAIL_SUBJECT',
+									$user['name'],
+									$config->get('sitename')
+							);
 
-                                    // Assemble the email data...the sexy way!
-                                    $mail = JFactory::getMailer()
-                                            ->setSender(
-                                                    array(
-                                                            $config->get('mailfrom'),
-                                                            $config->get('fromname')
-                                                    )
-                                            )
-                                            ->addRecipient($user['email'])
-                                            ->setSubject($emailSubject)
-                                            ->setBody($emailBody);
+							// Compute the mail body.
+							$emailBody = JText::sprintf(
+									'PLG_USER_SENDACTIVATIONMAIL_EMAIL_BODY',
+									$user['name'],
+									$config->get('sitename'),
+									JUri::root()
+							);
 
-                                    if (!$mail->Send()) {
-                                            JFactory::getApplication()->enqueueMessage(JText::_('ERROR_SENDING_EMAIL'), 'error');
-                                    }
-                                }
-                            }
+							// Assemble the email data...the sexy way!
+							$mail = JFactory::getMailer()
+									->setSender(
+											array(
+													$config->get('mailfrom'),
+													$config->get('fromname')
+											)
+									)
+									->addRecipient($user['email'])
+									->setSubject($emailSubject)
+									->setBody($emailBody)
+									->isHtml(true);
+
+							if (!$mail->Send()) {
+									JFactory::getApplication()->enqueueMessage(JText::_('ERROR_SENDING_EMAIL'), 'error');
+							}
+						}
 
                     }
+
+					function checkGroups($groupsToCheck, $userGroups)
+					{
+						if(!$groupsToCheck)
+						{
+							return true;
+						}
+
+						$intersect = array_intersect($groupsToCheck,$userGroups);
+
+						if(empty($intersect))
+						{
+							return false;
+						}
+
+						return true;
+					}
                             
 }

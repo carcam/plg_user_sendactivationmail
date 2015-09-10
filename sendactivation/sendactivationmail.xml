@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="2.5" type="plugin" group="user" method="upgrade">
+<extension version="3.4" type="plugin" group="user" method="upgrade">
 	<name>plg_user_sendactivationmail</name>
 	<author>Carlos M. Cámara</author>
 	<creationDate>March 2012</creationDate>
@@ -9,10 +9,10 @@
 	<authorUrl>www.cmcamara.com</authorUrl>
 	<version>1.0.0</version>
 	<description>PLG_USER_SENDACTIVATIONMAIL_XML_DESCRIPTION</description>
-                  <languages folder="languages">
+    <languages folder="languages">
 		<language tag="en-GB">en-GB.plg_user_sendactivationmail.ini</language>
 		<language tag="en-GB">en-GB.plg_user_sendactivationmail.sys.ini</language>
-                                    <language tag="es-ES">es-ES.plg_user_sendactivationmail.ini</language>
+        <language tag="es-ES">es-ES.plg_user_sendactivationmail.ini</language>
 		<language tag="es-ES">es-ES.plg_user_sendactivationmail.sys.ini</language>
 	</languages>
 	<files>
@@ -21,19 +21,30 @@
 	</files>
 	<config>
 		<fields name="params">
-
 			<fieldset name="basic">			
 				<field
-					name="mail_to_user"
-					type="radio"
-					default="1"
-					label="PLG_USER_SENDACTIVATIONMAIL_FIELD_MAILTOUSER_LABEL"
-					description="PLG_USER_SENDACTIVATIONMAIL_FIELD_MAILTOUSER_DESC">
-					<option
-						value="0">JNO</option>
-					<option
-						value="1">JYES</option>
-				</field>
+					name="sam_usergroups"
+					type="usergroup"
+					default="0"
+					label="PLG_USER_SENDACTIVATIONMAIL_CFG_GROUPS_TO_SEND_LABEL"
+					multiple="multiple"
+					description="PLG_USER_SENDACTIVATIONMAIL_CFG_GROUPS_TO_SEND_DESC"
+				/>
+				
+				<!--<field
+					name="sam_mail_subject"
+					type="text"
+					default=""
+					label="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_SUBJECT_LABEL"
+					description="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_SUBJECT_DESC"
+				/>
+				<field
+					name="sam_mail_body"
+					type="editor"
+					default=""
+					label="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_LABEL"
+					description="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_DESC"
+				/>-->
 				
 			</fieldset>
 
