@@ -16,10 +16,10 @@
 	<echo msg="Copying files to build directory..." />
 
 	<copy todir="${builddir}/sendactivation">
-	        <fileset dir="../sendactivation">
-	            <include name="**"></include>
-	            <exclude name="**/.svn/**"></exclude>
-	        </fileset>
+    <fileset dir="../sendactivation">
+      <include name="**"></include>
+      <exclude name="**/.svn/**"></exclude>
+    </fileset>
 	</copy>
     </target>
 
@@ -27,26 +27,26 @@
     <!-- Target: Hepta Form Fields                     -->
     <!-- ============================================  -->
     <target name="build-heptaformfields" description="Build Hepta Form Fields">
-	<echo msg="Building Hepta Form Fields..." />
-        <phing dir="${heptaformfields}/build" phingfile="build.xml" target="build" haltonfailure="true" inheritAll="false"/>
-	<copy file="${heptaformfields}/build/build/lib_hepta_formfields.zip" tofile="${builddir}/lib_hepta_formfields.zip" />
+      <echo msg="Building Hepta Form Fields..." />
+      <phing dir="${heptaformfields}/build" phingfile="build.xml" target="build" haltonfailure="true" inheritAll="false"/>
+      <copy file="${heptaformfields}/build/build/lib_hepta_formfields.zip" tofile="${builddir}/lib_hepta_formfields.zip" />
     </target>
 
     <!-- ============================================  -->
     <!-- Target: Send Activation Mail Plugin       -->
     <!-- ============================================  -->
-    <target name="build" description="Build Plugin">
-	<echo msg="Building Send Activation Mail Plugin..." />
-        <fileset dir="${builddir}/sendactivation" id="sendactivationZip">
-		<include name="**" />
-	</fileset>
+    <target name="build" description="Build Plugin" depends="prepare">
+      <echo msg="Building Send Activation Mail Plugin..." />
+      <fileset dir="${builddir}/sendactivation" id="sendactivationZip">
+        <include name="**" />
+      </fileset>
   <xmlproperty file="${builddir}/sendactivation/sendactivationmail.xml" />
-	<zip destfile="${builddir}/plg_sendactivationmail${extension.version}.zip">
+	<zip destfile="./plg_user_sendactivationmail_${extension.version}.zip">
 		<fileset refid="sendactivationZip" />
 	</zip>
   <delete dir="${builddir}" includeemptydirs="true" verbose="true" failonerror="true" />
     </target>
-    
+
     <!-- ============================================  -->
     <!-- Target: Upload to Extensions       -->
     <!-- ============================================  -->
@@ -54,7 +54,7 @@
 		<property file="ftp.build.properties" />
 
 		<fileset dir="./" id="packageuploadfile">
-			<include name="plg_sendactivationmail_${extension.version}.zip" />
+			<include name="plg_user_sendactivationmail_${extension.version}.zip" />
 		</fileset>
 		<ftpdeploy
 	        host="${ftp.destination.host}"
