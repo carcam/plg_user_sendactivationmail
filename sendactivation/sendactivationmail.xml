@@ -19,6 +19,9 @@
 		<filename plugin="sendactivationmail">sendactivationmail.php</filename>
 		<filename>index.html</filename>
 	</files>
+	<updateservers>
+			<server type="extension" priority="1" name="Send Activation Mail">https://extensions.hepta.es/index.php?option=com_ars&amp;view=update&amp;task=stream&amp;format=xml&amp;id=4&amp;dummy.xml</server>
+	</updateservers>
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
@@ -30,22 +33,6 @@
 					multiple="multiple"
 					description="PLG_USER_SENDACTIVATIONMAIL_CFG_GROUPS_TO_SEND_DESC"
 				/>
-
-				<!--<field
-					name="sam_mail_subject"
-					type="text"
-					default=""
-					label="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_SUBJECT_LABEL"
-					description="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_SUBJECT_DESC"
-				/>
-				<field
-					name="sam_mail_body"
-					type="editor"
-					default=""
-					label="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_LABEL"
-					description="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_DESC"
-				/>-->
-
 			</fieldset>
 
 		</fields>
