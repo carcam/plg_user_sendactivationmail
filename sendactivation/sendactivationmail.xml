@@ -2,7 +2,7 @@
 <extension version="3.4" type="plugin" group="user" method="upgrade">
 	<name>plg_user_sendactivationmail</name>
 	<author>Carlos M. Cámara</author>
-	<creationDate>March 2012</creationDate>
+	<creationDate>February 2017</creationDate>
 	<copyright>(C) 2017 Hepta Technologies SL. and Carlos Cámara All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>carlos@hepta.es</authorEmail>
