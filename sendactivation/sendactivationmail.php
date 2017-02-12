@@ -30,7 +30,7 @@ class plgUserSendactivationmail extends JPlugin
         {
     		// Load user_joomla plugin language (not done automatically).
     		$lang = JFactory::getLanguage();
-    		$lang->load('plg_user_sendactivationmail', JPATH_ADMINISTRATOR);
+    		$lang->load('com_users', JPATH_SITE);
 
     		// Compute the mail subject.
     		$emailSubject = JText::sprintf(
