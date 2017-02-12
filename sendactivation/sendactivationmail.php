@@ -34,14 +34,15 @@ class plgUserSendactivationmail extends JPlugin
 
     		// Compute the mail subject.
     		$emailSubject = JText::sprintf(
-    				'PLG_USER_SENDACTIVATIONMAIL_EMAIL_SUBJECT',
+    				'COM_USERS_EMAIL_ACTIVATED_BY_ADMIN_ACTIVATION_SUBJECT',
     				$user['name'],
-    				$config->get('sitename')
+    				$config->get('sitename'),
+                    $user['username']
     		);
 
     		// Compute the mail body.
     		$emailBody = JText::sprintf(
-    				'PLG_USER_SENDACTIVATIONMAIL_EMAIL_BODY',
+    				'COM_USERS_EMAIL_ACTIVATED_BY_ADMIN_ACTIVATION_BODY',
     				$user['name'],
     				$config->get('sitename'),
     				JUri::root()
@@ -61,7 +62,7 @@ class plgUserSendactivationmail extends JPlugin
     				->isHtml(true);
 
     		if (!$mail->Send()) {
-    				JFactory::getApplication()->enqueueMessage(JText::_('ERROR_SENDING_EMAIL'), 'error');
+    				JFactory::getApplication()->enqueueMessage(JText::_('PLG_USER_SENDACTIVATIONMAIL_MAIL_ERROR'), 'error');
     		}
     	}
 

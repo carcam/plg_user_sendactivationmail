@@ -3,11 +3,11 @@
 	<name>plg_user_sendactivationmail</name>
 	<author>Carlos M. Cámara</author>
 	<creationDate>March 2012</creationDate>
-	<copyright>(C) 2015 Hepta Technologies SL. All rights reserved.</copyright>
+	<copyright>(C) 2017 Hepta Technologies SL. and Carlos Cámara All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>carlos@heptatechnologies.com</authorEmail>
-	<authorUrl>www.cmcamara.com</authorUrl>
-	<version>1.0.0</version>
+	<authorEmail>carlos@hepta.es</authorEmail>
+	<authorUrl>https://extensions.hepta.es</authorUrl>
+	<version>1.0.1</version>
 	<description>PLG_USER_SENDACTIVATIONMAIL_XML_DESCRIPTION</description>
     <languages folder="languages">
 		<language tag="en-GB">en-GB.plg_user_sendactivationmail.ini</language>
@@ -21,7 +21,7 @@
 	</files>
 	<config>
 		<fields name="params">
-			<fieldset name="basic">			
+			<fieldset name="basic">
 				<field
 					name="sam_usergroups"
 					type="usergroup"
@@ -30,7 +30,7 @@
 					multiple="multiple"
 					description="PLG_USER_SENDACTIVATIONMAIL_CFG_GROUPS_TO_SEND_DESC"
 				/>
-				
+
 				<!--<field
 					name="sam_mail_subject"
 					type="text"
@@ -45,7 +45,7 @@
 					label="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_LABEL"
 					description="PLG_USER_SENDACTIVATIONMAIL_CFG_EMAIL_BODY_DESC"
 				/>-->
-				
+
 			</fieldset>
 
 		</fields>
